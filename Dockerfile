@@ -24,9 +24,8 @@ RUN mvn clean package -DskipTests
 # 复制 WAR 文件到 Tomcat webapps 目录
 RUN cp target/scrib.war /usr/local/tomcat/webapps/
 
-# 创建上传文件目录
-RUN mkdir -p /usr/local/tomcat/webapps/scrib/uploads && \
-    chmod -R 755 /usr/local/tomcat/webapps/scrib/uploads
+# 注意：不要在这里创建 scrib 目录，让 Tomcat 自动解压 WAR 文件
+# uploads 目录会在应用启动后通过 volume 挂载创建
 
 # 暴露端口
 EXPOSE 8080
