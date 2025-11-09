@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Scrib Blog System</display-name>
+    <description>Scrib博客系统</description>
+
+    <!-- 欢迎页面 -->
+    <welcome-file-list>
+        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 默认首页重定向到home -->
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>cyou.mayloves.servlet.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- 博客管理Servlet -->
+    <servlet>
+        <servlet-name>BlogServlet</servlet-name>
+        <servlet-class>cyou.mayloves.servlet.BlogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BlogServlet</servlet-name>
+        <url-pattern>/blog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogServlet</servlet-name>
+        <url-pattern>/blog/new</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogServlet</servlet-name>
+        <url-pattern>/blog/edit/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogServlet</servlet-name>
+        <url-pattern>/blog/delete/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- 博客详情Servlet -->
+    <servlet>
+        <servlet-name>BlogDetailServlet</servlet-name>
+        <servlet-class>cyou.mayloves.servlet.BlogDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BlogDetailServlet</servlet-name>
+        <url-pattern>/blog/detail/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- 附件管理Servlet -->
+    <servlet>
+        <servlet-name>AttachmentServlet</servlet-name>
+        <servlet-class>cyou.mayloves.servlet.AttachmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AttachmentServlet</servlet-name>
+        <url-pattern>/attachment/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- 错误页面 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
+</web-app>
+

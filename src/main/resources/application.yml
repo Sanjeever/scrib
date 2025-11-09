@@ -1,0 +1,17 @@
+# 数据库配置
+database:
+  driver: com.mysql.cj.jdbc.Driver
+  host: localhost
+  port: 3306
+  database: scrib
+  username: root
+  password: root
+  # 连接参数
+  parameters:
+    useUnicode: true
+    characterEncoding: UTF-8
+    useSSL: false
+    serverTimezone: Asia/Shanghai
+    allowPublicKeyRetrieval: true
+    connectTimeout: 5000
+
