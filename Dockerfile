@@ -21,10 +21,10 @@ RUN cp /tmp/src/main/resources/application-docker.yml /tmp/src/main/resources/ap
 WORKDIR /tmp
 RUN mvn clean package -DskipTests
 
-# 复制 WAR 文件到 Tomcat webapps 目录
-RUN cp target/scrib.war /usr/local/tomcat/webapps/
+# 复制 WAR 文件到 Tomcat webapps 目录并重命名为 ROOT.war，使其部署到根路径
+RUN cp target/scrib.war /usr/local/tomcat/webapps/ROOT.war
 
-# 注意：不要在这里创建 scrib 目录，让 Tomcat 自动解压 WAR 文件
+# 注意：不要在这里创建 ROOT 目录，让 Tomcat 自动解压 WAR 文件
 # uploads 目录会在应用启动后通过 volume 挂载创建
 
 # 暴露端口

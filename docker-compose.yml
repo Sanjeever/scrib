@@ -45,17 +45,17 @@ services:
       - DB_DATABASE=scrib
       - DB_USERNAME=root
       - DB_PASSWORD=root
-    # 暂时移除 uploads volume 挂载，避免在 WAR 解压前创建 scrib 目录
+    # 暂时移除 uploads volume 挂载，避免在 WAR 解压前创建 ROOT 目录
     # 应用启动后会自动创建 uploads 目录
     # volumes:
-    #   - scrib_uploads:/usr/local/tomcat/webapps/scrib/uploads
+    #   - scrib_uploads:/usr/local/tomcat/webapps/ROOT/uploads
     depends_on:
       scrib-db:
         condition: service_healthy
     networks:
       - scrib-network
     healthcheck:
-      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:8080/scrib/home || exit 1"]
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:8080/home || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
